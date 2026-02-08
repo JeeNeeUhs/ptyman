@@ -3,6 +3,8 @@
 static int check_apple(t_game game, int x, int y) {
 	for (int i = 0; i < 10; i++) {
 		if (game.apple[i].x == x && game.apple[i].y == y) {
+			game.apple[i].x =-1;
+			game.apple[i].y =-1;
 			return 1;
 		}
 	}
@@ -33,8 +35,9 @@ void move_player(t_game game, t_player *player, char direction) {
 		case 'a':
 			if (check_apple(game, player->x - 1, player->y))
 				player->eatcount++;
-			if (check_player(game, player, player->x - 1, player->y))
+			if (!check_player(game, player, player->x - 1, player->y))
 				player->x--;
+				break;
 		case 's':
 			if (check_apple(game, player->x, player->y + 1))
 				player->eatcount++;
