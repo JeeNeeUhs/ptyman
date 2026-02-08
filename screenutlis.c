@@ -15,12 +15,25 @@ void screen_loading(int cols, int rows) {
 	printf("\033[2J");
 }
 
-void screen_footer(int cols, int rows) {
-	for (int i = 0; i < cols; i++) {
-		printf("\033[\033[%d;%dH-", rows + 1, 0 + i);
+void screen_footer(t_game game) {
+	for (int i = 0; i < game.cols; i++) {
+		printf("\033[\033[%d;%dH-", game.rows + 1, 0 + i);
 	}
-	printf("\033[\033[%d;%dH bu kodu unix terminal anatomisi sinifi yazmistir", rows + 2, 0);
+	printf("\033[\033[%d;%dH bu kodu unix terminal anatomisi sinifi yazmistir", game.rows + 2, 10);
 
-	drawrandomdots(10, cols,rows);
 	fflush(stdout);
+}
+
+void screen_footer_update (t_game game, t_player p1, t_player p2) {
+	printf("\033[\033[%d;%dH\033[30m\033[43mPlayer 1: %d\033[0m", game.rows + 2, 2, p1.eatcount);
+	printf("\033[\033[%d;%dH\033[30m\033[45mPlayer 2: %d\033[0m", game.rows + 2, 80, p2.eatcount);
+	fflush(stdout);
+}
+
+void screen_random_dots(int n, t_coordinates *apple, int cols, int rows) {
+	for (int i = 0; i < n; i++) {
+		apple[i].x = (rand() % cols) + 1;
+		apple[i].y = (rand() % rows) + 1;
+		printf("\033[%d;%dH\033[41m \033[0m", apple[i].y, apple[i].x);
+	}
 }

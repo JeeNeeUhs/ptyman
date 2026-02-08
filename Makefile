@@ -1,7 +1,7 @@
 NAME        = ptyman
 CC          = gcc
 CFLAGS      = 
-SRCS        = main.c ptyctrl.c winsize.c playerutils.c screenutlis.c
+SRCS        = main.c ptyctrl.c winsize.c playerutils.c screenutlis.c move.c
 OBJS        = $(addprefix $(BUILD), $(SRCS:.c=.o))
 RM          = rm -rf
 BUILD       = build/
