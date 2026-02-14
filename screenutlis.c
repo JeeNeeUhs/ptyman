@@ -25,8 +25,9 @@ void screen_footer(t_game game) {
 }
 
 void screen_footer_update (t_game game, t_player p1, t_player p2) {
+	int rightpos = (game.p2->eatcount > 9) ? game.cols - 13 : game.cols - 12;
 	printf("\033[\033[%d;%dH\033[30m\033[43mPlayer 1: %d\033[0m", game.rows + 2, 2, p1.eatcount);
-	printf("\033[\033[%d;%dH\033[30m\033[45mPlayer 2: %d\033[0m", game.rows + 2, 80, p2.eatcount);
+	printf("\033[\033[%d;%dH\033[30m\033[45mPlayer 2: %d\033[0m", game.rows + 2, rightpos, p2.eatcount);
 	fflush(stdout);
 }
 
