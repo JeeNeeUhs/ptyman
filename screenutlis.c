@@ -19,7 +19,7 @@ void screen_footer(t_game game) {
 	for (int i = 0; i < game.cols; i++) {
 		printf("\033[\033[%d;%dH-", game.rows + 1, 0 + i);
 	}
-	printf("\033[\033[%d;%dH bu kodu unix terminal anatomisi sinifi yazmistir", game.rows + 2, 10);
+	printf("\033[\033[%d;%dHq for quit", game.rows + 2, ((game.cols + 10) / 2) - (game.p1->eatcount > 9 ? 13 : 12));
 
 	fflush(stdout);
 }
