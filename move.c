@@ -33,8 +33,9 @@ void move_player(t_game game, t_player *player, char direction) {
 		case 'a':
 			if (check_apple(game, player->x - 1, player->y))
 				player->eatcount++;
-			if (check_player(game, player, player->x - 1, player->y))
+			if (!check_player(game, player, player->x - 1, player->y))
 				player->x--;
+			break;
 		case 's':
 			if (check_apple(game, player->x, player->y + 1))
 				player->eatcount++;
