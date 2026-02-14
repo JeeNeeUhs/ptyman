@@ -3,6 +3,8 @@
 static int check_apple(t_game game, int x, int y) {
 	for (int i = 0; i < 10; i++) {
 		if (game.apple[i].x == x && game.apple[i].y == y) {
+			game.apple[i].x =-1;
+			game.apple[i].y =-1;
 			return 1;
 		}
 	}
